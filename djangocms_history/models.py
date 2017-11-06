@@ -141,7 +141,7 @@ def archive_old_operations(sender, request, user, **kwargs):
     p_operations = (
         PlaceholderOperation
         .objects
-        .filter(user=request.user, site=site)
+        .filter(user=user, site=site)
         .exclude(user_session_key=request.session.session_key)
     )
     p_operations.update(is_archived=True)
